@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart () {
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'x');
+    data.addColumn('number', 'y');
+    data.addColumn('number', 'color band 1');
+    data.addColumn('number', 'color band 2');
+    data.addColumn('number', 'color band 3');
+    data.addColumn('number', 'dates');
+
+
+    var y = 0.83;
+    // fill with 100 rows of random data
+
+
+
+    for (var i = 0; i < 100; i++) {
+        var k = 2.9 - y;
+
+        // make the colored bands appear every 20
+        data.addRow([i, y, 3, y, k, 2.1]);
+        y += 0.024;
+    }
+
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+
+    chart.draw(data, {
+        height: 400,
+        width: 600,
+        isStacked: true,
+        vAxis: {
+            minValue: 0,
+            maxValue: 5
+        },
+        series: {
+            0: {
+                type: 'line'
+            },
+            1: {
+                type: 'scatter'
+            },
+            2: {
+                lineWidth: 0,
+                type: 'area',
+                visibleInLegend: false,
+                color: 'green',
+                enableInteractivity: false
+            },
+            3: {
+                lineWidth: 0,
+                type: 'area',
+                visibleInLegend: false,
+                color: 'yellow',
+                enableInteractivity: false
+            },
+            4: {
+                lineWidth: 0,
+                type: 'area',
+                visibleInLegend: false,
+                color: 'red',
+                enableInteractivity: false
+            },
+            5: {
+                lineWidth: 0,
+                type: 'area',
+                visibleInLegend: false,
+                color: 'red',
+                enableInteractivity: false
+            },
+            6: {
+                lineWidth: 0,
+                type: 'area',
+                color: 'red',
+                visibleInLegend: false,
+                enableInteractivity: false
+            },
+
+
+        }
+    });
+}
+
+google.load('visualization', '1', {packages: ['corechart'], callback: drawChart});
+    </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#upload').bind("click",function()
+    {
+        var imgVal = $('#uploadfile').val();
+        if(imgVal=='')
+        {
+            alert("empty input file");
+            return false;
+        }
+
+
+    });
+});
+</script>
+<head>
+    <title>
+        How to check input file is empty
+        or not using JavaScript?
+    </title>
+</head>
+
+<body style = "text-align:center;">
+
+    <h1 style = "color:green;">
+        GeeksForGeeks
+    </h1>
+
+    <p id = "GFG_UP" style =
+        "font-size: 30px; font-weight: bold;">
+    </p>
+
+    <input type="file" name="File" id="file" />
+
+    <br><br>
+
+    <button onclick = "GFG_Fun()">
+        click here
+    </button>
+
+    <p id = "GFG_DOWN" style =
+        "color:green; font-size: 20px; font-weight: bold;">
+    </p>
+
+    <script>
+        var up = document.getElementById('GFG_UP');
+        var down = document.getElementById('GFG_DOWN');
+        var file = document.getElementById("file");
+
+        up.innerHTML = "Click on the button to see"
+                    + " if any file is selected";
+
+        function GFG_Fun() {
+            if(file.files.length == 0 ){
+                down.innerHTML = "No files selected";
+            } else {
+                down.innerHTML = "Some file is selected";
+            }
+        }
+    </script>
+</body>
+
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+  </body>
+  <div>
+    <a href="age_reader_Base.xlsx"  class="download-button" download>Download .xlsx</a>
+  </div>
+</html>
